@@ -1,0 +1,5 @@
+h = str(input())
+h = h.rjust(4, '0')
+a = int(h[0:2])
+b = int(h[3:] + h[2:3])
+print(2 ** a // 2 ** b)
