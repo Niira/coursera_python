@@ -1,14 +1,12 @@
-def fast_pow(x, y):
-    if y == 0:
-        return 1
-    if y == -1:
-        return 1. / x
-    p = fast_pow(x, y // 2)
-    p *= p
-    if y % 2:
-        p *= x
-    return p
+def gcd(n, m):
+    return m and gcd(m, n % m) or n
 
-x = float(input())
-y = int(input())
-print(fast_pow(x, y))
+
+def ReduceFraction(n, m):
+    if gcd(n, m) > n and gcd(n, m) > m:
+        return n, m
+    return n // gcd(n, m), m // gcd(n, m)
+
+n = int(input())
+m = int(input())
+print(ReduceFraction(n, m)[0], ReduceFraction(n, m)[1])
