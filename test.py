@@ -1,28 +1,14 @@
 fin = open('input.txt', 'r', encoding='utf8')
-fout = open('output.txt', 'w', encoding='utf8')
-temp_answers = fin.readlines()
-answers = []
-for line in temp_answers:
-    line = line.split()
-    answers.append(line)
+n  = int(fin.readline())
+temp = fin.read().split()
+i = 0
+my_list = []
+while i < len(temp):
+    my_list.append(temp[i + 1: i + int(temp[i]) + 1])
+    i = i + int(temp[i]) + 1
 
-n = int(answers[0][0])
-answers = answers[1:-1]
-
-for i in range(0, len(answers), 2):
-    for j in range(len(answers[i])):
-        answers[i][j] = int(answers[i][j])
-print(answers)
-posible_set = set(range(n + 1))
-print(posible_set)
-for i in range(1, len(answers), 2):
-    if answers[i][0] == 'YES':
-        posible_set = posible_set & set(answers[i - 1])
-    else:
-        for number in answers[i - 1]:
-            posible_set.discard(number)
-
-print(*posible_set, file=fout)
-print(*posible_set)
-fin.close()
-fout.close()
+print(my_list)
+all_lang = set()
+for student in my_list:
+    all_lang.update(set((student)))
+print(*list(all_lang))

@@ -1,5 +1,5 @@
-fin = open('input.txt', 'r', encoding='utf8')
-fout = open('output.txt', 'w', encoding='utf8')
+fin = open('input_7.txt', 'r', encoding='utf8')
+fout = open('output_7.txt', 'w', encoding='utf8')
 temp_answers = fin.readlines()
 answers = []
 for line in temp_answers:
@@ -8,6 +8,7 @@ for line in temp_answers:
 
 n = int(answers[0][0])
 answers = answers[1:-1]
+
 for i in range(0, len(answers), 2):
     for j in range(len(answers[i])):
         answers[i][j] = int(answers[i][j])
@@ -20,7 +21,9 @@ for i in range(1, len(answers), 2):
     else:
         for number in answers[i - 1]:
             posible_set.discard(number)
+posible_set_l = list(posible_set)
+posible_set_l.sort()
+print(*posible_set_l, file=fout)
 
-print(*posible_set, file=fout)
 fin.close()
 fout.close()
